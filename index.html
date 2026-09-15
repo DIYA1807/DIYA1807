@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diya Bisht — Cybersecurity & AI/ML</title>
+<title>Diya Bisht — Full Stack Developer & AI/ML</title>
+<meta name="description" content="Diya Bisht — Full Stack Developer building ML-powered apps, secure systems, and clean, functional web experiences.">
+<meta property="og:title" content="Diya Bisht — Full Stack Developer & AI/ML">
+<meta property="og:description" content="Full Stack Developer building ML-powered apps, secure systems, and clean, functional web experiences.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Diya Bisht — Full Stack Developer & AI/ML">
+<meta name="twitter:description" content="Full Stack Developer building ML-powered apps, secure systems, and clean, functional web experiences.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
@@ -46,11 +53,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2.5rem;displa
 #hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 #particles-canvas{position:absolute;inset:0;width:100%;height:100%;}
 .hero-content{position:relative;z-index:2;text-align:center;}
-.hero-tag{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;}
-.hero-name{font-family:var(--font-display);font-size:clamp(4rem,12vw,10rem);font-weight:700;line-height:0.9;letter-spacing:-2px;color:var(--text);opacity:0;}
+.hero-tag{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;opacity:1;}
+.hero-name{font-family:var(--font-display);font-size:clamp(4rem,12vw,10rem);font-weight:700;line-height:0.9;letter-spacing:-2px;color:var(--text);opacity:1;}
 .hero-name span{color:var(--accent);text-shadow:0 0 40px rgba(0,212,170,0.4);}
-.hero-subtitle{font-family:var(--font-mono);font-size:clamp(0.85rem,2vw,1rem);color:var(--muted2);margin-top:1.5rem;letter-spacing:1px;opacity:0;min-height:1.5rem;}
-.hero-cta{margin-top:3rem;display:flex;gap:1rem;justify-content:center;opacity:0;}
+.hero-subtitle{font-family:var(--font-mono);font-size:clamp(0.85rem,2vw,1rem);color:var(--muted2);margin-top:1.5rem;letter-spacing:1px;opacity:1;min-height:1.5rem;}
+.hero-cta{margin-top:3rem;display:flex;gap:1rem;justify-content:center;opacity:1;}
 .btn-primary{padding:0.85rem 2rem;background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all 0.3s;border-radius:2px;}
 .btn-primary:hover{background:#00f5c4;box-shadow:0 0 30px rgba(0,212,170,0.4);}
 .btn-secondary{padding:0.85rem 2rem;background:transparent;color:var(--accent);font-family:var(--font-mono);font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid var(--accent);cursor:pointer;transition:all 0.3s;border-radius:2px;}
@@ -84,8 +91,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2.5rem;displa
 .projects-header h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--text);}
 .projects-header p{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted2);letter-spacing:3px;text-transform:uppercase;}
 .h-sticky{background:var(--bg2);}
-.h-track{display:flex;width:400vw;height:100vh;}
+.h-track{display:flex;width:900vw;height:100vh;}
 .project-card{width:100vw;height:100vh;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:4rem;}
+/* FALLBACK: applied via JS only if GSAP/ScrollTrigger fail to load.
+   Turns the pinned/scrubbed rail into a normal swipe/scroll rail so all
+   projects stay reachable even without the animation library. */
+.h-sticky.no-gsap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;}
+.h-sticky.no-gsap .h-track{width:max-content;}
+.h-sticky.no-gsap .project-card{scroll-snap-align:start;}
 .project-inner{max-width:700px;border:1px solid var(--muted);padding:3rem;position:relative;transition:border-color 0.3s;}
 .project-inner:hover{border-color:var(--accent);}
 .project-inner::before{content:'';position:absolute;top:0;left:0;width:40px;height:2px;background:var(--accent);}
@@ -203,7 +216,7 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
 <section id="hero">
   <canvas id="particles-canvas"></canvas>
   <div class="hero-content">
-    <div class="hero-tag">Cybersecurity · AI/ML · Open to Internships</div>
+    <div class="hero-tag">Full Stack Developer · AI/ML · Open to Internships</div>
     <h1 class="hero-name">DIYA<br><span>BISHT</span></h1>
     <div class="hero-subtitle" id="typed-text"></div>
     <div class="hero-cta">
@@ -220,14 +233,14 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
 <section id="skills">
   <div class="skills-left">
     <div class="skills-label">// expertise</div>
-    <h2 class="skills-heading">Built to<br><em>Detect,</em><br>Built to<br><em>Defend.</em></h2>
+    <h2 class="skills-heading">Built to<br><em>Create,</em><br>Built to<br><em>Deploy.</em></h2>
     <div class="skills-bar-group">
       <div class="skill-bar"><span class="skill-name">Python</span><div class="skill-track"><div class="skill-fill" data-width="92"></div></div></div>
       <div class="skill-bar"><span class="skill-name">ML / AI</span><div class="skill-track"><div class="skill-fill" data-width="85"></div></div></div>
-      <div class="skill-bar"><span class="skill-name">Cybersecurity</span><div class="skill-track"><div class="skill-fill" data-width="80"></div></div></div>
+      <div class="skill-bar"><span class="skill-name">React</span><div class="skill-track"><div class="skill-fill" data-width="82"></div></div></div>
       <div class="skill-bar"><span class="skill-name">Java</span><div class="skill-track"><div class="skill-fill" data-width="75"></div></div></div>
-      <div class="skill-bar"><span class="skill-name">Cryptography</span><div class="skill-track"><div class="skill-fill" data-width="78"></div></div></div>
-      <div class="skill-bar"><span class="skill-name">React</span><div class="skill-track"><div class="skill-fill" data-width="70"></div></div></div>
+      <div class="skill-bar"><span class="skill-name">FastAPI</span><div class="skill-track"><div class="skill-fill" data-width="78"></div></div></div>
+      <div class="skill-bar"><span class="skill-name">Node.js</span><div class="skill-track"><div class="skill-fill" data-width="70"></div></div></div>
     </div>
   </div>
   <div class="skills-right">
@@ -239,9 +252,9 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
     </div>
     <div class="skill-panel">
       <div class="skill-panel-num">02 / 04</div>
-      <h3 class="skill-panel-title"><span class="accent">Cybersecurity</span></h3>
-      <p class="skill-panel-desc">Cisco certified. Deep understanding of network intrusion detection, cryptographic algorithms (DES, RSA, ElGamal, SHA-512), and explainable threat analysis systems.</p>
-      <div class="skill-tags"><span class="skill-tag">Cisco</span><span class="skill-tag">NIDS</span><span class="skill-tag">RSA</span><span class="skill-tag">SHA-512</span><span class="skill-tag">Network Security</span></div>
+      <h3 class="skill-panel-title"><span class="accent">Backend</span> &amp; APIs</h3>
+      <p class="skill-panel-desc">Cisco certified. Building robust backend systems with FastAPI and Node.js — REST APIs, SQLite/MongoDB integration, and clean, scalable architecture.</p>
+      <div class="skill-tags"><span class="skill-tag">FastAPI</span><span class="skill-tag">Node.js</span><span class="skill-tag">REST APIs</span><span class="skill-tag">SQLite</span><span class="skill-tag">MongoDB</span></div>
     </div>
     <div class="skill-panel">
       <div class="skill-panel-num">03 / 04</div>
@@ -270,16 +283,70 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
     <div class="h-track" id="h-track">
       <div class="project-card">
         <div class="project-inner">
-          <div class="project-num">01 / 04</div>
+          <div class="project-num">01 / 09</div>
           <h3 class="project-title">NIDS — <span class="accent">Intrusion</span> Detection</h3>
-          <p class="project-desc">Explainable ML-based Network Intrusion Detection System using NSL-KDD dataset. Random Forest + XGBoost ensemble with SHAP explainability, FastAPI backend, SQLite persistence, and a dark-themed cyberpunk dashboard.</p>
+          <p class="project-desc">Explainable ML-based Network Intrusion Detection System using NSL-KDD dataset. Random Forest + XGBoost ensemble with SHAP explainability, FastAPI backend, SQLite persistence, and a dark-themed dashboard. 93.57% accuracy across 12 attack classes.</p>
           <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Random Forest</span><span class="stack-tag">XGBoost</span><span class="stack-tag">SHAP</span><span class="stack-tag">FastAPI</span><span class="stack-tag">NSL-KDD</span></div>
           <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
         </div>
       </div>
       <div class="project-card">
         <div class="project-inner">
-          <div class="project-num">02 / 04</div>
+          <div class="project-num">02 / 09</div>
+          <h3 class="project-title">ARIA — <span class="accent">Risk</span> Intelligence Analyzer</h3>
+          <p class="project-desc">Automated Risk Intelligence Analyzer built as an extension of NIDS. FastAPI + Groq LLaMA 3.3 70B system with a Chart.js dashboard, PDF export, SQLite history, and a conversational chat endpoint.</p>
+          <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">Groq LLaMA 3.3</span><span class="stack-tag">Chart.js</span><span class="stack-tag">SQLite</span></div>
+          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-num">03 / 09</div>
+          <h3 class="project-title">VaultGuard — <span class="accent">Password</span> Manager</h3>
+          <p class="project-desc">Native Android password manager built in Java with AES-256 GCM encryption via Android Keystore, SHA-256 master password hashing, Room database, and a smooth login flow.</p>
+          <div class="project-stack"><span class="stack-tag">Java</span><span class="stack-tag">Android</span><span class="stack-tag">AES-256</span><span class="stack-tag">Room DB</span></div>
+          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-num">04 / 09</div>
+          <h3 class="project-title">ReelMint — <span class="accent">AI Video</span> Script Generator</h3>
+          <p class="project-desc">Full-stack AI-powered short-form video script generator built with FastAPI, React/Vite, Groq's LLaMA, gTTS, and Pollinations.ai for image generation. Landing page deployed to Vercel.</p>
+          <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">React</span><span class="stack-tag">Groq LLaMA</span><span class="stack-tag">gTTS</span></div>
+          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-num">05 / 09</div>
+          <h3 class="project-title">Riyaaz AI — <span class="accent">Karaoke</span> Web App</h3>
+          <p class="project-desc">An AI karaoke web app with a React frontend and Python FastAPI backend, built for a smooth, real-time singing experience.</p>
+          <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Python</span></div>
+          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-num">06 / 09</div>
+          <h3 class="project-title">SEO Audit <span class="accent">Tool</span></h3>
+          <p class="project-desc">An SEO auditing tool built with Vite, React, and the Gemini API. Features export functionality, audit history, and a clean multi-file structure.</p>
+          <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">Gemini API</span></div>
+          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-num">07 / 09</div>
+          <h3 class="project-title">Shadow Vault — <span class="accent">File</span> Encryption</h3>
+          <p class="project-desc">A Flask-based secure file encryption app with PBKDF2 key derivation and a dark UI, built for private, local file protection.</p>
+          <div class="project-stack"><span class="stack-tag">Flask</span><span class="stack-tag">Python</span><span class="stack-tag">PBKDF2</span></div>
+          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-inner">
+          <div class="project-num">08 / 09</div>
           <h3 class="project-title">Viberr — <span class="accent">Sentiment</span> Dashboard</h3>
           <p class="project-desc">Real-time sentiment analysis dashboard with CSV upload, custom data pipelines, and Recharts visualizations. Built with React + Vite and Tailwind CSS. Clean, fast, and insightful.</p>
           <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">Recharts</span><span class="stack-tag">Tailwind</span><span class="stack-tag">NLP</span></div>
@@ -288,19 +355,10 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
       </div>
       <div class="project-card">
         <div class="project-inner">
-          <div class="project-num">03 / 04</div>
+          <div class="project-num">09 / 09</div>
           <h3 class="project-title">Moodrift — <span class="accent">Vibe</span> Generator</h3>
           <p class="project-desc">Creative mood board app that generates color palettes and font pairings matched to your vibe. Dark-themed, interactive, and built for aesthetic exploration.</p>
           <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">CSS</span><span class="stack-tag">Creative AI</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">04 / 04</div>
-          <h3 class="project-title">Peaceful <span class="accent">Garden</span></h3>
-          <p class="project-desc">Calming affirmations web app with gentle animations designed for younger audiences. Minimal, soft, and grounding — pure HTML/CSS/JS, no dependencies.</p>
-          <div class="project-stack"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span><span class="stack-tag">Wellness</span></div>
           <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
         </div>
       </div>
@@ -355,7 +413,7 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
   <div class="statement-bg"></div>
   <div class="statement-text">
     <p class="statement-quote">"Security isn't a feature.<br><em>It's a foundation."</em></p>
-    <div class="statement-tag">DIYA BISHT · Cybersecurity &amp; AI/ML · Dehradun, India</div>
+    <div class="statement-tag">DIYA BISHT · Full Stack Developer &amp; AI/ML · Dehradun, India</div>
   </div>
 </section>
 
@@ -370,16 +428,16 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
   </div>
   <div class="about-right">
     <div class="about-label">// about_me.txt</div>
-    <h2 class="about-title">Final-year BCA.<br>Building what<br>matters.</h2>
-    <p class="about-bio">I'm Diya Bisht — a final-year BCA student at Graphic Era Hill University, Dehradun, working at the intersection of cybersecurity and machine learning. I build systems that are intelligent, explainable, and secure.</p>
-    <p class="about-bio">From NIDS to sentiment dashboards to creative web apps — I love turning complex ideas into clean, working code. Currently hunting for internship opportunities in Cybersecurity and AI/ML.</p>
+    <h2 class="about-title">BCA Graduate.<br>Building what<br>matters.</h2>
+    <p class="about-bio">I'm Diya Bisht — a BCA graduate from Graphic Era Hill University, Dehradun, working at the intersection of full-stack development and machine learning. I build systems that are intelligent, explainable, and reliable.</p>
+    <p class="about-bio">From NIDS to sentiment dashboards to creative web apps — I love turning complex ideas into clean, working code. Currently hunting for internship opportunities in Full-Stack Development and AI/ML.</p>
     <div class="about-details">
       <div class="about-detail"><span>📍</span><span>Dehradun, India · Open to Remote</span></div>
-      <div class="about-detail"><span>🎓</span><span>BCA Final Year · Graphic Era Hill University</span></div>
+      <div class="about-detail"><span>🎓</span><span>BCA Graduate · Graphic Era Hill University</span></div>
       <div class="about-detail"><span>📧</span><span>DIYABISHT.230423646@gehu.ac.in</span></div>
     </div>
     <div class="cert-badge">
-      <span class="cert-badge-text">🛡️ CISCO CERTIFIED · Network Security</span>
+      <span class="cert-badge-text">🛡️ CISCO CERTIFIED</span>
     </div>
   </div>
 </section>
@@ -392,7 +450,7 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
   <div class="contact-inner">
     <div class="contact-label">// reach_me.sh</div>
     <h2 class="contact-title">Let's Build<br><em>Something Secure.</em></h2>
-    <p class="contact-sub">Open to Cybersecurity · AI/ML · Software Engineering Internships</p>
+    <p class="contact-sub">Open to Full-Stack Development · AI/ML · Software Engineering Internships</p>
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/diya-bisht-066060345" target="_blank" class="contact-link">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -417,11 +475,31 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
 </footer>
 
 <script>
+// REGISTER GSAP PLUGINS
+// Without this, any "scrollTrigger:" option passed into a gsap.to()/from()
+// tween is silently ignored, which is why the horizontal projects rail
+// wasn't pinning/scrubbing and only the first card was ever visible.
+if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 // LENIS
-const lenis = new Lenis({ lerp: 0.075, smoothWheel: true });
-lenis.on("scroll", ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-gsap.ticker.lagSmoothing(0);
+// autoRaf:false is required here — GSAP's ticker below is what drives Lenis's
+// frame updates. Without this, Lenis also runs its own internal RAF loop in
+// parallel, and the two loops fight over scroll position. That desync is what
+// was breaking ScrollTrigger's pin/scrub math on the horizontal projects rail.
+const lenis = new Lenis({ lerp: 0.075, smoothWheel: true, autoRaf: false });
+if (typeof ScrollTrigger !== "undefined") {
+  lenis.on("scroll", ScrollTrigger.update);
+}
+if (typeof gsap !== "undefined") {
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+} else {
+  // No GSAP ticker available to drive Lenis — run its own rAF loop instead.
+  function rafLoop(time) { lenis.raf(time); requestAnimationFrame(rafLoop); }
+  requestAnimationFrame(rafLoop);
+}
 
 // PROGRESS BAR
 const progressBar = document.getElementById("progress-bar");
@@ -463,7 +541,7 @@ lenis.on("scroll", updateProgress);
 // TYPED TEXT
 (function(){
   const el = document.getElementById("typed-text");
-  const texts = ["Final-year BCA · Graphic Era Hill University", "Cybersecurity Researcher · Cisco Certified", "ML Engineer · NIDS · Explainable AI", "Open to Internships · Dehradun / Remote"];
+  const texts = ["BCA Graduate · Graphic Era Hill University", "Full Stack Developer · Cisco Certified", "ML Engineer · NIDS · Explainable AI", "Open to Internships · Dehradun / Remote"];
   let ti=0, ci=0, deleting=false, wait=0;
   function type(){
     const current = texts[ti];
@@ -475,26 +553,40 @@ lenis.on("scroll", updateProgress);
 })();
 
 // HERO ANIMATIONS
-gsap.to(".hero-tag", { opacity:1, y:0, duration:1, delay:0.3, ease:"power3.out" });
-gsap.from(".hero-name", { opacity:0, y:60, duration:1.2, delay:0.5, ease:"power3.out" });
-gsap.to(".hero-name", { opacity:1, duration:0.1, delay:0.5 });
-gsap.to(".hero-subtitle", { opacity:1, duration:0.5, delay:1.2 });
-gsap.to(".hero-cta", { opacity:1, y:0, duration:1, delay:1.4, ease:"power3.out" });
+// Elements are visible by default via CSS (opacity:1). If GSAP is available,
+// we animate them IN from a hidden state (.from()) so the reveal effect still
+// plays — but if the GSAP CDN fails to load for any reason, the content simply
+// stays visible instead of being stuck blank forever.
+if (typeof gsap !== "undefined") {
+  gsap.from(".hero-tag", { opacity:0, y:20, duration:1, delay:0.3, ease:"power3.out" });
+  gsap.from(".hero-name", { opacity:0, y:60, duration:1.2, delay:0.5, ease:"power3.out" });
+  gsap.from(".hero-subtitle", { opacity:0, duration:0.5, delay:1.2 });
+  gsap.from(".hero-cta", { opacity:0, y:20, duration:1, delay:1.4, ease:"power3.out" });
+}
 
 // SKILL BARS
-ScrollTrigger.create({
-  trigger: "#skills",
-  start: "top 80%",
-  onEnter: () => {
-    document.querySelectorAll(".skill-fill").forEach(el => {
-      el.style.width = el.dataset.width + "%";
-    });
-  }
-});
+if (typeof ScrollTrigger !== "undefined") {
+  ScrollTrigger.create({
+    trigger: "#skills",
+    start: "top 80%",
+    onEnter: () => {
+      document.querySelectorAll(".skill-fill").forEach(el => {
+        el.style.width = el.dataset.width + "%";
+      });
+    }
+  });
+} else {
+  // No ScrollTrigger available — just fill the bars in immediately so the
+  // skills section isn't stuck showing 0% forever.
+  document.querySelectorAll(".skill-fill").forEach(el => {
+    el.style.width = el.dataset.width + "%";
+  });
+}
 
 // HORIZONTAL PROJECTS RAIL
 const hTrack = document.querySelector(".h-track");
-if(hTrack){
+const hSticky = document.querySelector(".h-sticky");
+if (hTrack && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
   gsap.to(hTrack, {
     x: () => -(hTrack.scrollWidth - window.innerWidth),
     ease: "none",
@@ -507,33 +599,44 @@ if(hTrack){
       invalidateOnRefresh: true
     }
   });
+} else if (hSticky) {
+  // GSAP/ScrollTrigger didn't load (e.g. no internet, CDN blocked, opened
+  // the file directly). Fall back to a plain swipeable/scrollable rail so
+  // every project card is still reachable instead of only the first one.
+  hSticky.classList.add("no-gsap");
 }
 
-// PARALLAX STATEMENT
-gsap.fromTo(".statement-quote",
-  { y: 60, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1.5, ease: "power3.out",
-    scrollTrigger: { trigger: "#statement", start: "top 70%" }
-  }
-);
+// PARALLAX STATEMENT / ABOUT PHOTO / CONTACT
+// These already sit at their natural (visible) state in the DOM since no
+// CSS sets them to opacity:0 — gsap.fromTo just adds a reveal animation on
+// top when the library is available. Guarded so a failed CDN load can't
+// throw and abort the rest of the script.
+if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  gsap.fromTo(".statement-quote",
+    { y: 60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.5, ease: "power3.out",
+      scrollTrigger: { trigger: "#statement", start: "top 70%" }
+    }
+  );
 
-// ABOUT PHOTO
-gsap.fromTo(".about-photo-wrap",
-  { x: -60, opacity: 0 },
-  { x: 0, opacity: 1, duration: 1.2, ease: "power3.out",
-    scrollTrigger: { trigger: "#about", start: "top 70%" }
-  }
-);
+  gsap.fromTo(".about-photo-wrap",
+    { x: -60, opacity: 0 },
+    { x: 0, opacity: 1, duration: 1.2, ease: "power3.out",
+      scrollTrigger: { trigger: "#about", start: "top 70%" }
+    }
+  );
 
-// CONTACT
-gsap.fromTo(".contact-title",
-  { y: 80, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
-    scrollTrigger: { trigger: "#contact", start: "top 70%" }
-  }
-);
+  gsap.fromTo(".contact-title",
+    { y: 80, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
+      scrollTrigger: { trigger: "#contact", start: "top 70%" }
+    }
+  );
+}
 
-ScrollTrigger.refresh();
+if (typeof ScrollTrigger !== "undefined") {
+  ScrollTrigger.refresh();
+}
 </script>
 </body>
 </html>
