@@ -66,7 +66,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2.5rem;displa
 @keyframes pulse{0%,100%{opacity:0.4;}50%{opacity:1;}}
 
 /* SKILLS STICKY */
-#skills{display:flex;min-height:400vh;}
+#skills{display:flex;min-height:200vh;}
 .skills-left{position:sticky;top:0;height:100vh;width:40%;display:flex;flex-direction:column;justify-content:center;padding:0 4rem;}
 .skills-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:1rem;}
 .skills-heading{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;line-height:1.1;color:var(--text);}
@@ -87,29 +87,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2.5rem;displa
 
 /* PROJECTS RAIL */
 #projects-section{background:var(--bg2);}
-.projects-header{padding:6rem 4rem 3rem;display:flex;justify-content:space-between;align-items:flex-end;}
+.projects-header{padding:6rem 4rem 3rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;}
 .projects-header h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--text);}
 .projects-header p{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted2);letter-spacing:3px;text-transform:uppercase;}
-.h-sticky{background:var(--bg2);}
-.h-track{display:flex;width:900vw;height:100vh;}
-.project-card{width:100vw;height:100vh;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:4rem;}
-/* FALLBACK: applied via JS only if GSAP/ScrollTrigger fail to load.
-   Turns the pinned/scrubbed rail into a normal swipe/scroll rail so all
-   projects stay reachable even without the animation library. */
-.h-sticky.no-gsap{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;}
-.h-sticky.no-gsap .h-track{width:max-content;}
-.h-sticky.no-gsap .project-card{scroll-snap-align:start;}
-.project-inner{max-width:700px;border:1px solid var(--muted);padding:3rem;position:relative;transition:border-color 0.3s;}
-.project-inner:hover{border-color:var(--accent);}
-.project-inner::before{content:'';position:absolute;top:0;left:0;width:40px;height:2px;background:var(--accent);}
-.project-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);letter-spacing:3px;margin-bottom:1.5rem;}
-.project-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--text);margin-bottom:1rem;}
+.projects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding:0 4rem 5rem;}
+.project-card{border:1px solid var(--muted);padding:1.75rem;position:relative;background:var(--bg2);display:flex;flex-direction:column;height:100%;opacity:1;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;}
+.project-card::before{content:'';position:absolute;top:0;left:0;width:32px;height:2px;background:var(--accent);}
+.project-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.35);}
+.project-num{font-family:var(--font-mono);font-size:0.65rem;color:var(--muted);letter-spacing:2px;margin-bottom:0.85rem;}
+.project-title{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;line-height:1.25;}
 .project-title .accent{color:var(--accent);}
-.project-desc{font-size:1rem;color:var(--muted2);line-height:1.8;margin-bottom:2rem;}
-.project-stack{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;}
-.stack-tag{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);border:1px solid rgba(0,212,170,0.25);padding:0.25rem 0.7rem;letter-spacing:1px;}
-.project-links{display:flex;gap:1rem;}
-.project-link{font-family:var(--font-mono);font-size:0.75rem;color:var(--text);text-decoration:none;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid var(--muted);padding-bottom:2px;transition:all 0.3s;}
+.project-desc{font-size:0.82rem;color:var(--muted2);line-height:1.6;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex-grow:1;}
+.project-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem;}
+.stack-tag{font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);border:1px solid rgba(0,212,170,0.25);padding:0.2rem 0.55rem;letter-spacing:0.5px;}
+.project-links{display:flex;gap:1rem;margin-top:auto;}
+.project-link{font-family:var(--font-mono);font-size:0.7rem;color:var(--text);text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--muted);padding-bottom:2px;transition:all 0.3s;}
 .project-link:hover{color:var(--accent);border-color:var(--accent);}
 
 /* STACKING CARDS */
@@ -183,6 +175,9 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
 /* SECTION DIVIDER */
 .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--muted),transparent);}
 
+@media(max-width:1100px){
+  .projects-grid{grid-template-columns:repeat(2,1fr);}
+}
 @media(max-width:768px){
   #skills{flex-direction:column;}
   .skills-left{position:relative;width:100%;height:auto;padding:4rem 2rem 2rem;}
@@ -191,7 +186,8 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
   #about{flex-direction:column;}
   .about-left,.about-right{width:100%;padding:3rem 2rem;}
   .about-photo-wrap{width:250px;margin:0 auto;}
-  .project-card{padding:2rem;}
+  .projects-header{padding:4rem 1.5rem 1.5rem;}
+  .projects-grid{grid-template-columns:1fr;padding:0 1.5rem 3rem;gap:1rem;}
   footer{flex-direction:column;gap:1rem;text-align:center;}
 }
 </style>
@@ -279,89 +275,55 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
     <h2>Things I've Built</h2>
     <p>// projects</p>
   </div>
-  <div class="h-sticky">
-    <div class="h-track" id="h-track">
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">01 / 09</div>
-          <h3 class="project-title">NIDS — <span class="accent">Intrusion</span> Detection</h3>
-          <p class="project-desc">Explainable ML-based Network Intrusion Detection System using NSL-KDD dataset. Random Forest + XGBoost ensemble with SHAP explainability, FastAPI backend, SQLite persistence, and a dark-themed dashboard. 93.57% accuracy across 12 attack classes.</p>
-          <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Random Forest</span><span class="stack-tag">XGBoost</span><span class="stack-tag">SHAP</span><span class="stack-tag">FastAPI</span><span class="stack-tag">NSL-KDD</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">02 / 09</div>
-          <h3 class="project-title">ARIA — <span class="accent">Risk</span> Intelligence Analyzer</h3>
-          <p class="project-desc">Automated Risk Intelligence Analyzer built as an extension of NIDS. FastAPI + Groq LLaMA 3.3 70B system with a Chart.js dashboard, PDF export, SQLite history, and a conversational chat endpoint.</p>
-          <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">Groq LLaMA 3.3</span><span class="stack-tag">Chart.js</span><span class="stack-tag">SQLite</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">03 / 09</div>
-          <h3 class="project-title">VaultGuard — <span class="accent">Password</span> Manager</h3>
-          <p class="project-desc">Native Android password manager built in Java with AES-256 GCM encryption via Android Keystore, SHA-256 master password hashing, Room database, and a smooth login flow.</p>
-          <div class="project-stack"><span class="stack-tag">Java</span><span class="stack-tag">Android</span><span class="stack-tag">AES-256</span><span class="stack-tag">Room DB</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">04 / 09</div>
-          <h3 class="project-title">ReelMint — <span class="accent">AI Video</span> Script Generator</h3>
-          <p class="project-desc">Full-stack AI-powered short-form video script generator built with FastAPI, React/Vite, Groq's LLaMA, gTTS, and Pollinations.ai for image generation. Landing page deployed to Vercel.</p>
-          <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">React</span><span class="stack-tag">Groq LLaMA</span><span class="stack-tag">gTTS</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">05 / 09</div>
-          <h3 class="project-title">Riyaaz AI — <span class="accent">Karaoke</span> Web App</h3>
-          <p class="project-desc">An AI karaoke web app with a React frontend and Python FastAPI backend, built for a smooth, real-time singing experience.</p>
-          <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Python</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">06 / 09</div>
-          <h3 class="project-title">SEO Audit <span class="accent">Tool</span></h3>
-          <p class="project-desc">An SEO auditing tool built with Vite, React, and the Gemini API. Features export functionality, audit history, and a clean multi-file structure.</p>
-          <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">Gemini API</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">07 / 09</div>
-          <h3 class="project-title">Shadow Vault — <span class="accent">File</span> Encryption</h3>
-          <p class="project-desc">A Flask-based secure file encryption app with PBKDF2 key derivation and a dark UI, built for private, local file protection.</p>
-          <div class="project-stack"><span class="stack-tag">Flask</span><span class="stack-tag">Python</span><span class="stack-tag">PBKDF2</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">08 / 09</div>
-          <h3 class="project-title">Viberr — <span class="accent">Sentiment</span> Dashboard</h3>
-          <p class="project-desc">Real-time sentiment analysis dashboard with CSV upload, custom data pipelines, and Recharts visualizations. Built with React + Vite and Tailwind CSS. Clean, fast, and insightful.</p>
-          <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">Recharts</span><span class="stack-tag">Tailwind</span><span class="stack-tag">NLP</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-inner">
-          <div class="project-num">09 / 09</div>
-          <h3 class="project-title">Moodrift — <span class="accent">Vibe</span> Generator</h3>
-          <p class="project-desc">Creative mood board app that generates color palettes and font pairings matched to your vibe. Dark-themed, interactive, and built for aesthetic exploration.</p>
-          <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">CSS</span><span class="stack-tag">Creative AI</span></div>
-          <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
-        </div>
-      </div>
+  <div class="projects-grid" id="projects-grid">
+    <div class="project-card">
+      <div class="project-num">01 / 07</div>
+      <h3 class="project-title">NIDS — <span class="accent">Intrusion</span> Detection</h3>
+      <p class="project-desc">Explainable ML-based Network Intrusion Detection System using NSL-KDD dataset. Random Forest + XGBoost ensemble with SHAP explainability, FastAPI backend, SQLite persistence, and a dark-themed dashboard. 93.57% accuracy across 12 attack classes.</p>
+      <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Random Forest</span><span class="stack-tag">XGBoost</span><span class="stack-tag">SHAP</span><span class="stack-tag">FastAPI</span><span class="stack-tag">NSL-KDD</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02 / 07</div>
+      <h3 class="project-title">ARIA — <span class="accent">Risk</span> Intelligence Analyzer</h3>
+      <p class="project-desc">Automated Risk Intelligence Analyzer built as an extension of NIDS. FastAPI + Groq LLaMA 3.3 70B system with a Chart.js dashboard, PDF export, SQLite history, and a conversational chat endpoint.</p>
+      <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">Groq LLaMA 3.3</span><span class="stack-tag">Chart.js</span><span class="stack-tag">SQLite</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">03 / 07</div>
+      <h3 class="project-title">VaultGuard — <span class="accent">Password</span> Manager</h3>
+      <p class="project-desc">Native Android password manager built in Java with AES-256 GCM encryption via Android Keystore, SHA-256 master password hashing, Room database, and a smooth login flow.</p>
+      <div class="project-stack"><span class="stack-tag">Java</span><span class="stack-tag">Android</span><span class="stack-tag">AES-256</span><span class="stack-tag">Room DB</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">04 / 07</div>
+      <h3 class="project-title">ReelMint — <span class="accent">AI Video</span> Script Generator</h3>
+      <p class="project-desc">Full-stack AI-powered short-form video script generator built with FastAPI, React/Vite, Groq's LLaMA, gTTS, and Pollinations.ai for image generation. Landing page deployed to Vercel.</p>
+      <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">React</span><span class="stack-tag">Groq LLaMA</span><span class="stack-tag">gTTS</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">05 / 07</div>
+      <h3 class="project-title">SEO Audit <span class="accent">Tool</span></h3>
+      <p class="project-desc">An SEO auditing tool built with Vite, React, and the Gemini API. Features export functionality, audit history, and a clean multi-file structure.</p>
+      <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">Gemini API</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">06 / 07</div>
+      <h3 class="project-title">Viberr — <span class="accent">Sentiment</span> Dashboard</h3>
+      <p class="project-desc">Real-time sentiment analysis dashboard with CSV upload, custom data pipelines, and Recharts visualizations. Built with React + Vite and Tailwind CSS. Clean, fast, and insightful.</p>
+      <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">Recharts</span><span class="stack-tag">Tailwind</span><span class="stack-tag">NLP</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">07 / 07</div>
+      <h3 class="project-title">Moodrift — <span class="accent">Vibe</span> Generator</h3>
+      <p class="project-desc">Creative mood board app that generates color palettes and font pairings matched to your vibe. Dark-themed, interactive, and built for aesthetic exploration.</p>
+      <div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">Vite</span><span class="stack-tag">CSS</span><span class="stack-tag">Creative AI</span></div>
+      <div class="project-links"><a href="https://github.com/DIYA1807" class="project-link" target="_blank">GitHub →</a></div>
     </div>
   </div>
 </section>
@@ -406,20 +368,7 @@ footer{background:#000;padding:2rem 4rem;display:flex;justify-content:space-betw
   </div>
 </section>
 
-<div class="divider"></div>
 
-<!-- PARALLAX STATEMENT -->
-<section id="statement">
-  <div class="statement-bg"></div>
-  <div class="statement-text">
-    <p class="statement-quote">"Security isn't a feature.<br><em>It's a foundation."</em></p>
-    <div class="statement-tag">DIYA BISHT · Full Stack Developer &amp; AI/ML · Dehradun, India</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ABOUT -->
 <section id="about">
   <div class="about-left">
     <div class="about-photo-wrap">
@@ -583,27 +532,19 @@ if (typeof ScrollTrigger !== "undefined") {
   });
 }
 
-// HORIZONTAL PROJECTS RAIL
-const hTrack = document.querySelector(".h-track");
-const hSticky = document.querySelector(".h-sticky");
-if (hTrack && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-  gsap.to(hTrack, {
-    x: () => -(hTrack.scrollWidth - window.innerWidth),
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".h-sticky",
-      start: "top top",
-      end: () => "+=" + (hTrack.scrollWidth - window.innerWidth),
-      pin: true,
-      scrub: 1,
-      invalidateOnRefresh: true
-    }
+// PROJECT CARDS — light entrance reveal for the grid
+// Cards are opacity:1 by default in CSS, so if GSAP/ScrollTrigger fails to
+// load, every card is simply visible immediately with no animation.
+if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  gsap.utils.toArray(".project-card").forEach((card) => {
+    gsap.from(card, {
+      opacity: 0,
+      y: 24,
+      duration: 0.5,
+      ease: "power2.out",
+      scrollTrigger: { trigger: card, start: "top 92%" }
+    });
   });
-} else if (hSticky) {
-  // GSAP/ScrollTrigger didn't load (e.g. no internet, CDN blocked, opened
-  // the file directly). Fall back to a plain swipeable/scrollable rail so
-  // every project card is still reachable instead of only the first one.
-  hSticky.classList.add("no-gsap");
 }
 
 // PARALLAX STATEMENT / ABOUT PHOTO / CONTACT
@@ -612,13 +553,6 @@ if (hTrack && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined
 // top when the library is available. Guarded so a failed CDN load can't
 // throw and abort the rest of the script.
 if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-  gsap.fromTo(".statement-quote",
-    { y: 60, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.5, ease: "power3.out",
-      scrollTrigger: { trigger: "#statement", start: "top 70%" }
-    }
-  );
-
   gsap.fromTo(".about-photo-wrap",
     { x: -60, opacity: 0 },
     { x: 0, opacity: 1, duration: 1.2, ease: "power3.out",
